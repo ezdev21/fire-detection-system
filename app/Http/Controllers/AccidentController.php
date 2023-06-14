@@ -114,10 +114,16 @@ class AccidentController extends Controller
             }
         }
         return [
-            'resolvedInOneHour'=>$resolvedInOneHour,
-            'resolvedInTwoHours'=>$resolvedInTwoHours,
-            'resolvedInThreeHours'=>$resolvedInThreeHours,
-            'resolvedInMoreThanThreeHours'=>$resolvedInMoreThanThreeHours,
+            'data'=>[
+                'resolvedInOneHour'=>$resolvedInOneHour,
+                'resolvedInTwoHours'=>$resolvedInTwoHours,
+                'resolvedInThreeHours'=>$resolvedInThreeHours,
+                'resolvedInMoreThanThreeHours'=>$resolvedInMoreThanThreeHours,
+            ],
+            'resolvedInOneHourPercent'=>($resolvedInOneHour/$accidents->count())*100,
+            'resolvedInTwoHoursPercent'=>($resolvedInTwoHours/$accidents->count())*100,
+            'resolvedInThreeHoursPercent'=>($resolvedInThreeHours/$accidents->count())*100,
+            'resolvedInMoreThanThreeHoursPercent'=>($resolvedInMoreThanThreeHours/$accidents->count())*100,
         ];       
     }
 }

@@ -9,13 +9,13 @@
     .then(res=>{
         const data = {
         labels: [
-            'Resolved In One Hour',
-            'Resolved In Two Hours',
-            'Resolved In Three Hours',
-            'Resolved In More Than Three Hours'
+            `Resolved In One Hour ${res.data.resolvedInOneHourPercent} %`,
+            `Resolved In Two Hours ${res.data.resolvedInTwoHoursPercent} %`,
+            `Resolved In Three Hours ${res.data.resolvedInThreeHoursPercent} %`,
+            `Resolved In More Than Three Hours ${res.data.resolvedInMoreThanThreeHoursPercent} %`
         ],
         datasets: [{
-            data: Object.values(res.data),
+            data: Object.values(res.data.data),
             backgroundColor: [
             'rgb(54, 192, 135)',
             'rgb(25, 25, 255)',
