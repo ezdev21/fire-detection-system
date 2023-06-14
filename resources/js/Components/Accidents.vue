@@ -23,14 +23,20 @@ const fetchAccidents = ()=>{
 
 const listen = ()=>{
     Echo.private('accident')
-    .listen('NewAccident',(accident)=>{
-        accident.broadcasted=true
-        accidents.value.push(accident)
-        toast.info(`New Accident Occured At ${accident.latitude},${accident.longitude}`,{
+    .listen('NewAccident',async(accident)=>{
+        let newAccident;
+        await axios.get(`/api/accident/${accident.id}`)
+             .then(res=>{
+                newAccident=res.data
+             })
+        newAccident.broadcasted=true             
+        accidents.value.push(newAccident)
+        toast.info(`New Accident Occured At ${newAccident.latitude},${newAccident.longitude}-${newAccident.created_time}`,{
         autoClose: 60000,
+        limit:1,
         toastStyle: {
           color: 'white',
-          backgroundColor:'red'
+          backgroundColor:'red',
     }});
     }) 
 }

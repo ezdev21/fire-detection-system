@@ -23,9 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/accident',[AccidentController::class,'index']);
 
-Route::post('/accident',[AccidentController::class,'store']);
-
 Route::get('/accident/statistics',[AccidentController::class,'statistics']);
+
+Route::get('/accident/{accident}',[AccidentController::class,'show']);
+
+Route::post('/accident',[AccidentController::class,'store']);
 
 Route::post('/{accident}/complete',[AccidentController::class,'complete']);
 

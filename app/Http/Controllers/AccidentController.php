@@ -49,7 +49,10 @@ class AccidentController extends Controller
      */
     public function show(Accident $accident)
     {
-        //
+        $accident->created_time = $accident->created_at->diffForHumans();
+        $accident->src="https://maps.google.com/maps/embed/$accident->latitude,$accident->longitude&hl=es&z=15&amp;output=embed;";
+        $accident->broadcasted=false;
+        return response()->json($accident);
     }
 
     /**

@@ -28,6 +28,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('statistics')" :active="route().current('statistics')">
                                     Statistics
                                 </NavLink>
+                                <NavLink :href="route('register')" :active="route().current('register')">
+                                    Add Adminstrator
+                                </NavLink>
                             </div>
                         </div>
 

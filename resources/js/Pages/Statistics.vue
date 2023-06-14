@@ -3,9 +3,6 @@
   import { Head } from '@inertiajs/vue3';
   import { onMounted } from 'vue';
   import Chart from 'chart.js/auto'
-  import { ref } from 'vue';
-  
-  //let results = [50,50,50,50]
 
   onMounted(async () => {
     await axios.get('/api/accident/statistics')
